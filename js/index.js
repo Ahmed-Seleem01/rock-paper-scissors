@@ -1,11 +1,11 @@
 // Get the input from the computer by random method and store it in the variable
 function getComputerChoice(){
-  // Define an array to store string values of choices
+  // define an array to store string values of choices
   const gameWords = ['rock', 'paper', 'scissors']
-  // Define a variable to store random choice
+  //define a variable to store random choice
   let computerInput = gameWords[Math.floor(Math.random()*3)]
   console.log(computerInput);
-  // Return a random choice
+  // return a random choice
   return computerInput;
 }
 
@@ -59,3 +59,32 @@ function playRound(playerSelection, computerSelection){
   }
 }
 
+// Define a function to play the game and it is IIFE (immediately invoked function expression)
+(function game(){
+  // Define variables to track the win count 
+  let playerWinCount = 0;
+  let computerWinCount = 0;
+  // Make a loop to play five times
+  for (let i =0; i< 5; i++){
+    let result = playRound(getPlayerChoice(), getComputerChoice());
+    console.log(result);
+    // If the player wins increase his win count
+    if(result.includes("You Win")){
+      playerWinCount++;
+    }
+    // If the computer wins increase its win count
+    else if(result.includes("You Lose")){
+      computerWinCount++;
+    }
+  }
+  // Make a check if the player wins
+  if(playerWinCount > computerWinCount){
+    console.log("You Win the game")
+  }
+  // Make a check if the computer wins
+  else if(playerWinCount < computerWinCount){
+    console.log("You Lose the game")
+  }else{
+    console.log("Draw")
+  }
+})();
