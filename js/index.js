@@ -23,10 +23,12 @@ buttons.forEach(btn => {
     if(playerWinCount ===5){
       resultDiv.innerText = 'Final result: You Win!';
       playerWinCount = 0;
+      computerWinCount = 0;
     }
     else if(computerWinCount === 5){
       resultDiv.innerText = 'Final result: You Lose!';
       computerWinCount = 0;
+      playerWinCount = 0;
     }
   });
 });
