@@ -11,14 +11,19 @@ function getComputerChoice(){
 
 
 // Get the input form the player by prompt method and store it in the variable
-function getPlayerChoice(){
-  let choice = prompt("Enter paper, rock or scissors");
+function getPlayerChoice(e){
+  let choice = 'e.target.textContent';
+  console.log(this);
   return choice;
 }
-
+const buttons = document.querySelectorAll('button');
+console.log(buttons)
+buttons.forEach(btn => {
+  btn.addEventListener('click', getPlayerChoice);
+});
 // Define a function for playing one round
 function playRound(playerSelection, computerSelection){
-  // Make sure the plaerSelection parameter is case-insensitive
+  // Make sure the playerSelection parameter is case-insensitive
   playerSelection = playerSelection.toLowerCase();
   console.log(playerSelection)
   // Make a condition to check if the player wins or loses against the computer
@@ -60,7 +65,7 @@ function playRound(playerSelection, computerSelection){
 }
 
 // Define a function to play the game and it is IIFE (immediately invoked function expression)
-(function game(){
+function game(){
   // Define variables to track the win count 
   let playerWinCount = 0;
   let computerWinCount = 0;
@@ -87,4 +92,4 @@ function playRound(playerSelection, computerSelection){
   }else{
     console.log("Draw")
   }
-})();
+};
