@@ -21,11 +21,11 @@ buttons.forEach(btn => {
   btn.addEventListener('click', (e)=>{
     playGame(e);
     if(playerWinCount ===5){
-      resultDiv.innerText = 'You Win!';
+      resultDiv.innerText = 'Final result: You Win!';
       playerWinCount = 0;
     }
     else if(computerWinCount === 5){
-      resultDiv.innerText = 'You Lose!';
+      resultDiv.innerText = 'Final result: You Lose!';
       computerWinCount = 0;
     }
   });
