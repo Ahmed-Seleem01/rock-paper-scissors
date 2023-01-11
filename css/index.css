@@ -1,0 +1,11 @@
+body{
+  margin: 0 auto;
+}
+button{
+  padding: 10px;
+  font-size: 2rem;
+  border-radius: 10px;
+}
+.result{
+  font-size: 3rem;
+}
