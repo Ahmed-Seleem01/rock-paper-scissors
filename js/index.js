@@ -13,7 +13,6 @@ function getComputerChoice() {
   return computerInput;
 }
 
-// Get the input form the player by prompt method and store it in the variable
 // Define variables to track the win count
 let playerWinCount = 0;
 let computerWinCount = 0;
@@ -66,3 +65,7 @@ function playGame(e) {
   Player win count: ${playerWinCount}
   Computer win count: ${computerWinCount}`;
 }
+
+const screenController = (()=>{
+
+})();
