@@ -32,42 +32,17 @@ buttons.forEach((btn) => {
 });
 // Define a function for playing one round
 function playRound(playerSelection, computerSelection) {
-  // Make sure the playerSelection parameter is case-insensitive
-  playerSelection = playerSelection.toLowerCase();
-  console.log(playerSelection);
+  // Make sure the choices is case-insensitive
+  let playerChoice = playerSelection.toLowerCase();
+  let computerChoice = computerSelection.toLowerCase();
   // Make a condition to check if the player wins or loses against the computer
-  switch (playerSelection) {
-    // If the selection is rock
-    case "rock":
-      if (computerSelection === "paper") {
-        return "You Lose! Paper beats Rock";
-      } else if (computerSelection === "scissors") {
-        return "You Win! Rock beats Scissors";
-      } else {
-        return "Draw";
-      }
-    // If the selection is paper
-    case "paper":
-      if (computerSelection === "rock") {
-        return "You Win! Paper beats Rock";
-      } else if (computerSelection === "scissors") {
-        return "You Lose! Scissors beats Paper";
-      } else {
-        return "Draw";
-      }
-    // If the selection is scissors
-    case "scissors":
-      if (computerSelection === "rock") {
-        return "You Lose! Rock beats Scissors";
-      } else if (computerSelection === "paper") {
-        return "You Win! Scissors beats Paper";
-      } else {
-        return "Draw";
-      }
-    // If the selection is not defined
-    default:
-      return "You must enter paper, rock or scissors";
-  }
+  if(playerChoice === "paper" && computerChoice === "rock") return "You Win! Rock beats Scissors";
+  else if(playerChoice === "paper" && computerChoice === "scissors") return "You Lose! Scissors beats Paper";
+  else if(playerChoice === "rock" && computerChoice === "scissors") return "You Win! Rock beats Scissors";
+  else if(playerChoice === "rock" && computerChoice === "paper") return "You Lose! Paper beats Rock";
+  else if(playerChoice === "scissors" && computerChoice === "paper") return "You Win! Scissors beats Paper";
+  else if(playerChoice === "scissors" && computerChoice === "rock") return "You Lose! Rock beats Scissors";
+  else return "Draw"; 
 }
 
 // Define a function to play the game
