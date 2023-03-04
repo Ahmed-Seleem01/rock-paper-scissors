@@ -1,10 +1,14 @@
+// Declare a module to store values that computer can choose form
+const computerChoices = (()=>{
+  // Define an array to store string values of choices
+  const choices = ["rock", "paper", "scissors"];
+  return {choices};
+})();
+
 // Get the input from the computer by random method and store it in the variable
 function getComputerChoice() {
-  // Define an array to store string values of choices
-  const gameWords = ["rock", "paper", "scissors"];
   // Define a variable to store random choice
-  let computerInput = gameWords[Math.floor(Math.random() * 3)];
-  console.log(computerInput);
+  let computerInput = computerChoices.choices[Math.floor(Math.random() * 3)];
   // Return a random choice
   return computerInput;
 }
