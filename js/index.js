@@ -25,7 +25,7 @@ const winCounter = (() => {
     playerWinIncrement,
     computerWinIncrement,
     resetPlayerWinCount,
-    resetComputerWinCount
+    resetComputerWinCount,
   };
 })();
 // Get the input from the computer by random method and store it in the variable
@@ -76,29 +76,45 @@ function playRound(playerSelection, computerSelection) {
 const screenController = () => {
   const resultDiv = document.querySelector(".result");
   const buttons = document.querySelectorAll(".word");
+  const start = document.querySelector(".start");
+  const restart = document.querySelector(".restart");
 
-  function playGame() {
+  const playRoundWhenClicked = (e) => {
+    let result = playRound(e.target.textContent, getComputerChoice());
+    // console.log(winCounter.getPlayerWinCount())
+    // console.log(winCounter.getComputerWinCount())
+    resultDiv.innerText = `${result}`;
+    if (winCounter.getPlayerWinCount() === 5) {
+      resultDiv.innerText = "Final result: You Win!";
+      winCounter.resetComputerWinCount();
+      winCounter.resetPlayerWinCount();
+    } else if (winCounter.getComputerWinCount() === 5) {
+      resultDiv.innerText = "Final result: You Lose!";
+      winCounter.resetComputerWinCount();
+      winCounter.resetPlayerWinCount();
+    }
+  };
+
+  function playGame(e) {
+    e.target.disabled = true;
     buttons.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        let result = playRound(e.target.textContent, getComputerChoice());
-        // console.log(winCounter.getPlayerWinCount())
-        // console.log(winCounter.getComputerWinCount())
-        resultDiv.innerText = `${result}`;
-        if (winCounter.getPlayerWinCount() === 5) {
-          resultDiv.innerText = "Final result: You Win!";
-          winCounter.resetComputerWinCount();
-          winCounter.resetPlayerWinCount();
-        } else if (winCounter.getComputerWinCount() === 5) {
-          resultDiv.innerText = "Final result: You Lose!";
-          winCounter.resetComputerWinCount();
-          winCounter.resetPlayerWinCount();
-        }
-      });
+      btn.addEventListener("click", playRoundWhenClicked);
     });
   }
 
-  const start = document.querySelector(".start");
+  function resetGame() {
+    start.disabled = false;
+    resultDiv.innerText = "";
+    winCounter.resetComputerWinCount();
+    winCounter.resetPlayerWinCount();
+    buttons.forEach((btn) => {
+      btn.removeEventListener("click", playRoundWhenClicked);
+    });
+  }
+
   start.addEventListener("click", playGame);
+
+  restart.addEventListener("click", resetGame);
 };
 
 screenController();
