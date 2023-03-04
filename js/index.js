@@ -83,13 +83,16 @@ const screenController = () => {
     let result = playRound(e.target.textContent, getComputerChoice());
     // console.log(winCounter.getPlayerWinCount())
     // console.log(winCounter.getComputerWinCount())
-    resultDiv.innerText = `${result}`;
+    resultDiv.innerText = `${result}
+                          Player win count: ${winCounter.getPlayerWinCount()}
+                          Computer win count: ${winCounter.getComputerWinCount()}
+                          `;
     if (winCounter.getPlayerWinCount() === 5) {
-      resultDiv.innerText = "Final result: You Win!";
+      resultDiv.innerText += "Final result: You Win!";
       winCounter.resetComputerWinCount();
       winCounter.resetPlayerWinCount();
     } else if (winCounter.getComputerWinCount() === 5) {
-      resultDiv.innerText = "Final result: You Lose!";
+      resultDiv.innerText += "Final result: You Lose!";
       winCounter.resetComputerWinCount();
       winCounter.resetPlayerWinCount();
     }
